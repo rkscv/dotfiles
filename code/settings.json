@@ -13,6 +13,7 @@
     "terminal.integrated.enableMultiLinePasteWarning": false,
     "extensions.ignoreRecommendations": true,
     "security.workspace.trust.enabled": false,
+    "rust-analyzer.check.command": "clippy",
     "black-formatter.args": [
         "--skip-string-normalization"
     ],
