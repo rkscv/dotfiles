@@ -1,6 +1,5 @@
 {
     "files.autoSave": "afterDelay",
-    "editor.suggestSelection": "first",
     "workbench.startupEditor": "none",
     "workbench.settings.enableNaturalLanguageSearch": false,
     "go.toolsManagement.autoUpdate": true,
