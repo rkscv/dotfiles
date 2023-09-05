@@ -1,0 +1,37 @@
+#!/usr/bin/env python3
+import os
+import sqlite3
+import zipfile
+
+
+def archive(src: str, dst: str):
+    with sqlite3.connect(max(os.listdir(os.path.join(src, 'data')))) as db:
+        for gid, token, title, title_jpn in db.execute(
+            'select gid, token, title, title_jpn from downloads'
+        ):
+            (dirname,) = db.execute(
+                'select dirname from download_dirname where gid = ?', (gid,)
+            ).fetchone()
+            os.makedirs(os.path.join(dst, title_jpn), exist_ok=True)
+            with zipfile.ZipFile(
+                os.path.join(dst, title_jpn, f'{gid}-{token}-{title}.zip'),
+                'w',
+                compression=zipfile.ZIP_DEFLATED,
+            ) as zip:
+                for file in os.scandir(os.path.join(src, 'download', dirname)):
+                    if not file.name.startswith('.'):
+                        zip.write(file.path, file.name)
+
+
+def main():
+    import argparse
+
+    parser = argparse.ArgumentParser()
+    parser.add_argument('src')
+    parser.add_argument('dst')
+    args = parser.parse_args()
+    archive(args.src, args.dst)
+
+
+if __name__ == '__main__':
+    main()
