@@ -5,7 +5,9 @@ import zipfile
 
 
 def archive(src: str, dst: str):
-    with sqlite3.connect(max(os.listdir(os.path.join(src, 'data')))) as db:
+    with sqlite3.connect(
+        max(entry.path for entry in os.scandir(os.path.join(src, 'data')))
+    ) as db:
         for gid, token, title, title_jpn in db.execute(
             'select gid, token, title, title_jpn from downloads'
         ):
