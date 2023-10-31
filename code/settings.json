@@ -1,11 +1,13 @@
 {
     "files.autoSave": "afterDelay",
+    "workbench.editor.empty.hint": "hidden",
     "workbench.startupEditor": "none",
     "workbench.settings.enableNaturalLanguageSearch": false,
+    "go.inlayHints.compositeLiteralFields": true,
     "go.toolsManagement.autoUpdate": true,
-    "workbench.editor.untitled.hint": "hidden",
     "terminal.integrated.defaultProfile.linux": "fish",
     "telemetry.telemetryLevel": "off",
+    "editor.formatOnSave": true,
     "editor.unicodeHighlight.includeStrings": false,
     "workbench.enableExperiments": false,
     "git.confirmSync": false,
@@ -16,4 +18,11 @@
     "black-formatter.args": [
         "--skip-string-normalization"
     ],
+    "[python]": {
+        "editor.defaultFormatter": "ms-python.black-formatter",
+        "editor.codeActionsOnSave": {
+            "source.organizeImports": true
+        },
+    },
+    "typst-lsp.experimentalFormatterMode": "on",
 }
