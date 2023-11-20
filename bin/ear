@@ -2,34 +2,34 @@
 import os
 import sqlite3
 import zipfile
+from pathlib import Path
 
 
-def archive(src: str, dst: str):
-    with sqlite3.connect(
-        max(entry.path for entry in os.scandir(os.path.join(src, 'data')))
-    ) as db:
+def archive(src: Path, dst: Path):
+    with sqlite3.connect(max((src / 'data').iterdir())) as db:
         for gid, token, title, title_jpn in db.execute(
             'select gid, token, title, title_jpn from downloads'
         ):
             (dirname,) = db.execute(
                 'select dirname from download_dirname where gid = ?', (gid,)
             ).fetchone()
-            os.makedirs(os.path.join(dst, title_jpn), exist_ok=True)
+            os.makedirs(dst / title_jpn, exist_ok=True)
             with zipfile.ZipFile(
-                os.path.join(dst, title_jpn, f'{gid}-{token}-{title}.zip'),
+                dst / title_jpn / f'{gid}-{token}-{title}.zip',
                 'w',
                 compression=zipfile.ZIP_DEFLATED,
             ) as zip:
-                for file in os.scandir(os.path.join(src, 'download', dirname)):
+                for file in (src / 'download' / dirname).iterdir():
                     if not file.name.startswith('.'):
-                        zip.write(file.path, file.name)
+                        zip.write(file, file.name)
+            print(title_jpn)
 
 
 if __name__ == '__main__':
     import argparse
 
     parser = argparse.ArgumentParser()
-    parser.add_argument('src')
-    parser.add_argument('dst')
+    parser.add_argument('src', type=Path)
+    parser.add_argument('dst', type=Path)
     args = parser.parse_args()
     archive(args.src, args.dst)
