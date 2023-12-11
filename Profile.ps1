@@ -13,3 +13,9 @@ public static extern uint SetThreadExecutionState(uint esFlags);
 '@ -Name Kernel32 -Namespace Win32 -PassThru
     $Kernel32::SetThreadExecutionState([uint32] '0x80000001')
 }
+
+Set-PSReadLineKeyHandler -Key Alt+Backspace -Function ShellBackwardKillWord
+Set-PSReadLineKeyHandler -Key Ctrl+RightArrow -Function ForwardWord
+Set-PSReadLineKeyHandler -Key UpArrow -Function HistorySearchBackward
+Set-PSReadLineKeyHandler -Key DownArrow -Function HistorySearchForward
+Set-PSReadLineOption -HistorySearchCursorMovesToEnd
