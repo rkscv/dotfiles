@@ -6,6 +6,12 @@
     "go.inlayHints.compositeLiteralFields": true,
     "go.toolsManagement.autoUpdate": true,
     "terminal.integrated.defaultProfile.linux": "fish",
+    "terminal.integrated.defaultProfile.windows": "pwsh",
+    "terminal.integrated.profiles.windows": {
+        "pwsh": {
+            "path": "pwsh",
+        },
+    },
     "telemetry.telemetryLevel": "off",
     "editor.formatOnSave": true,
     "editor.unicodeHighlight.includeStrings": false,
@@ -21,7 +27,7 @@
     "[python]": {
         "editor.defaultFormatter": "ms-python.black-formatter",
         "editor.codeActionsOnSave": {
-            "source.organizeImports": true
+            "source.organizeImports": "explicit"
         },
     },
     "typst-lsp.experimentalFormatterMode": "on",
