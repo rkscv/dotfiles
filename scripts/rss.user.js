@@ -27,7 +27,10 @@
 	for (const elem of document.querySelectorAll('link[type]')) {
 		if (types.includes(elem.getAttribute('type'))) {
 			const href = elem.getAttribute('href')
-			if (href) GM.registerMenuCommand(elem.getAttribute('title') || href, () => GM.openInTab(href))
+			if (href)
+				GM.registerMenuCommand(elem.getAttribute('title') || href, () =>
+					GM.openInTab(new URL(href, location.href).href),
+				)
 		}
 	}
 }
