@@ -1,0 +1,25 @@
+{
+  "files.autoSave": "afterDelay",
+  "workbench.editor.empty.hint": "hidden",
+  "workbench.startupEditor": "none",
+  "workbench.settings.enableNaturalLanguageSearch": false,
+  "terminal.integrated.defaultProfile.linux": "fish",
+  "telemetry.telemetryLevel": "off",
+  "editor.formatOnSave": true,
+  "editor.codeActionsOnSave": {
+    "source.organizeImports.biome": "explicit",
+    "source.removeUnusedImports": "explicit"
+  },
+  "editor.unicodeHighlight.includeStrings": false,
+  "diffEditor.ignoreTrimWhitespace": false,
+  "workbench.enableExperiments": false,
+  "extensions.ignoreRecommendations": true,
+  "security.workspace.trust.enabled": false,
+  "git.confirmSync": false,
+  "git.inputValidation": true,
+  "remote.autoForwardPortsSource": "hybrid",
+  "go.inlayHints.compositeLiteralFields": true,
+  "go.toolsManagement.autoUpdate": true,
+  "go.survey.prompt": false,
+  "chat.commandCenter.enabled": false
+}
