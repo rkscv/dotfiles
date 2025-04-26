@@ -1,9 +1,4 @@
 local utils = require('mp.utils')
-local script_name = mp.get_script_name()
-
-mp.register_script_message('set-sub-fonts-dir', function(dir)
-    mp.set_property('sub-fonts-dir', dir)
-end)
 
 mp.register_script_message('select-sub-fonts-dir', function()
     local path, error = mp.get_property('path')
@@ -19,7 +14,7 @@ mp.register_script_message('select-sub-fonts-dir', function()
     for _, dir in ipairs(dirs) do
         table.insert(menu.items, {
             title = dir .. ' /',
-            value = { 'script-message-to', script_name, 'set-sub-fonts-dir', utils.join_path(path, dir) },
+            value = { 'set', 'sub-fonts-dir', utils.join_path(path, dir) },
         })
     end
     mp.commandv('script-message-to', 'uosc', 'open-menu', utils.format_json(menu))
