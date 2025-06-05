@@ -21,5 +21,7 @@
   "go.inlayHints.compositeLiteralFields": true,
   "go.toolsManagement.autoUpdate": true,
   "go.survey.prompt": false,
+  "rust-analyzer.check.command": "clippy",
+  "biome.requireConfiguration": true,
   "chat.commandCenter.enabled": false
 }
