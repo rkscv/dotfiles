@@ -1,9 +1,8 @@
 [flavor]
 dark = "dracula"
 
-[status]
-sep_left = { open = "", close = "" }
-sep_right = { open = "", close = "" }
+[mgr]
+preview_hovered = { hidden = true }
 
 [icon]
 globs = []
