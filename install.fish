@@ -2,7 +2,7 @@
 cd (status dirname)
 for arg in $argv
     switch $arg
-        case fish
+        case fish yazi
             mkdir -p ~/.config/$arg
             ln -sfr $arg/* ~/.config/$arg/
         case mpv
