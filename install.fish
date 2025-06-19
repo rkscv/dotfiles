@@ -2,9 +2,13 @@
 cd (status dirname)
 for arg in $argv
     switch $arg
-        case fish mpv
+        case fish
             mkdir -p ~/.config/$arg
             ln -sfr $arg/* ~/.config/$arg/
+        case mpv
+            mkdir -p ~/.config/mpv/scripts
+            ln -sfr mpv/{script-opts, *.conf} ~/.config/mpv/
+            ln -sfr mpv/scripts/* ~/.config/mpv/scripts
         case cargo
             envsubst <cargo/config.toml >~/.cargo/config.toml
         case pip
