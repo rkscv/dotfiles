@@ -1,3 +1,4 @@
+--- generated from https://github.com/mpv-player/mpv/blob/master/DOCS/man/lua.rst
 --- @meta mp.msg
 
 local msg = {}

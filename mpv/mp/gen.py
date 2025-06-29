@@ -175,6 +175,7 @@ for definition_list in document.findall(
 os.makedirs(outdir, exist_ok=True)
 for module, functions in modules.items():
 	with open(os.path.join(outdir, f'{module}.lua'), 'w') as file:
+		file.write('--- generated from https://github.com/mpv-player/mpv/blob/master/DOCS/man/lua.rst\n')
 		file.write(
 			'--- @meta mp\n\nmp = {}\nmp.msg = require "mp.msg"\n\n'
 			if module == 'mp'
